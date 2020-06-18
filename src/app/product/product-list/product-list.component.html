@@ -1,0 +1,56 @@
+<div class="card border-primary mb-3 text-center">
+    <div class="card-header">
+        Lista de Productos
+    </div>
+    <div class="card-body text-primary">
+        <div class="table-responsive">
+            <table class="table" *ngIf="products && products.length">
+                <thead>
+                    <tr>
+                        <th>
+                            <button class="btn btn-primary" (click)="changeImagesState()">
+                                <i class="fa fa-eye"></i>
+                                {{showImages?'Ocultar':'Mostrar'}} Imagenes
+                            </button>
+                        </th>
+                        <th>
+                            Producto
+                        </th>
+                        <th>
+                            Codigo
+                        </th>
+                        <th>
+                            Disponible
+                        </th>
+                        <th>
+                            Precio
+                        </th>
+                        <th>
+                            Rating
+                        </th>
+                    </tr>
+                </thead>
+                <tr *ngFor="let product of products">
+                    <td>
+                        <img *ngIf="showImages" src={{product.imageUrl}} title="Imagen del producto" width="100">
+                    </td>
+                    <td>
+                        {{product.productName}}
+                    </td>
+                    <td>
+                        {{product.productCode}}
+                    </td>
+                    <td>
+                        {{product.releaseDate}}
+                    </td>
+                    <td>
+                        {{product.price}}
+                    </td>
+                    <td>
+                        <app-star [rating]="product.starRating"></app-star>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
